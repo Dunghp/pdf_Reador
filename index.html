@@ -20,7 +20,7 @@
         }
         .head{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 10px;
@@ -30,20 +30,8 @@
         }
         .head textarea{
             min-width: 500px;
-            min-height: 300px;
+            min-height: 400px;
             overflow: scroll;
-        }
-        .head button{
-            position: fixed;
-            top: 350px;
-            left: 55%;
-            width: 100px;
-            z-index: 1;
-            border: none;
-            cursor: pointer;
-            background: rgb(234, 20, 155);
-            border-radius: 8px solid green;
-            color: white;
         }
         #container{
             position: relative;
@@ -55,33 +43,60 @@
             border-radius: 5px solid black;
             overflow-y: scroll;
         }
-        .delete{
-            position: fixed;
-            top: 350px;
-            left: 40%;
+        h1{
+            text-align: center;
+            color: lightpink;
+        }
+        .wrapper{
+            display: flex;
+            flex-direction: row;
+        }
+        .save{
             width: 100px;
-            z-index: 1;
-
+            border: none;
+            cursor: pointer;
+            background: rgb(234, 20, 155);
+            border-radius: 8px solid green;
+            color: white;
+        }
+        .delete{
+            width: 100px;
             border: none;
             border-radius: 9px solid lightblue;
             color: white;
             background: teal;
             cursor: pointer;
+            margin-left: 200px;
         }
-        h1{
-            text-align: center;
-            color: lightpink;
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+        @media (max-width: 900px){
+            .wrapper{
+                display: flex;
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>ReadPDF Application</h1>
-    <div class="head">
-        <textarea id="content" type="text" placeholder="Enter content here..."></textarea>
-        <button type="submit" id="submit">SAVE</button>
-    </div><hr>
-    <button class="delete">Delete</button>
-    <div id="container"></div>
+    <div class="wrapper">
+        <div class="head">
+            <h1>ReadPDF Application</h1>
+            <textarea id="content" type="text" placeholder="Enter content here..."></textarea>
+            <div class="buttons">
+                <button type="submit" class="save" id="submit">SAVE</button>
+                <button class="delete">Delete</button>
+            </div>
+        </div><hr>
+        <div id="container"></div>
+    </div>
 
 <script>
     const btnSave = document.querySelector('#submit');
