@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read PDF</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body{
+            margin: 0;
+            min-width: 100vw;
+            min-height: 100vh;
+            background: linear-gradient(blue, pink) center;
+            background-repeat: no-repeat;
+        }
+        .head{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .head textarea, button{
+            padding: 5px;
+        }
+        .head textarea{
+            min-width: 500px;
+            min-height: 300px;
+            overflow: scroll;
+        }
+        .head button{
+            position: fixed;
+            top: 350px;
+            left: 55%;
+            width: 100px;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+            background: rgb(234, 20, 155);
+            border-radius: 8px solid green;
+            color: white;
+        }
+        #container{
+            position: relative;
+            background: #fff;
+            margin: 20px;
+            padding: 10px;
+            width: 92vw;
+            height: 80vh;
+            border-radius: 5px solid black;
+            overflow-y: scroll;
+        }
+        .delete{
+            position: fixed;
+            top: 350px;
+            left: 40%;
+            width: 100px;
+            z-index: 1;
+
+            border: none;
+            border-radius: 9px solid lightblue;
+            color: white;
+            background: teal;
+            cursor: pointer;
+        }
+        h1{
+            text-align: center;
+            color: lightpink;
+        }
+    </style>
+</head>
+<body>
+    <h1>ReadPDF Application</h1>
+    <div class="head">
+        <textarea id="content" type="text" placeholder="Enter content here..."></textarea>
+        <button type="submit" id="submit">SAVE</button>
+    </div><hr>
+    <button class="delete">Delete</button>
+    <div id="container"></div>
+
+<script>
+    const btnSave = document.querySelector('#submit');
+    const inputContent = document.querySelector('#content');
+    const outputContent = document.querySelector('#container');
+    const btnDelete = document.querySelector('.delete');
+
+    btnSave.onclick = function(e){
+        e.preventDefault();
+
+        outputContent.innerHTML = inputContent.value.replaceAll('\n', '<br/>');
+        inputContent.value = '';
+    }
+
+    btnDelete.onclick = function(e){
+        e.preventDefault();
+
+        outputContent.innerHTML = '';
+    }
+</script>
+</body>
+</html>
